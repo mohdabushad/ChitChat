@@ -20,7 +20,7 @@ const Signup = () => {
     if (inp.name == "" || inp.email == "" || inp.password == "" || inp.username =="" ) {
       toast.error("please fill all input");
     } else {
-      let posturl = "http://localhost:8000/user/signup";
+      let posturl = "https://chitchat-j7bn.onrender.com/user/signup";
       let res = await fetch(posturl, {
         method: "POST",
         headers: {
