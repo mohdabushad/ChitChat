@@ -23,7 +23,6 @@ app.use(cors({
         "http://localhost:5173",
         "https://your-frontend-domain.vercel.app" // 👈 production frontend
     ],
-    credentials: true
 }));
 
 
