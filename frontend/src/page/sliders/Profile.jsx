@@ -21,6 +21,7 @@ const Profile = () => {
   const [isabout, setisabout] = useState(false);
   const [about, setabout] = useState("At a collage");
   let [showpro, setshowpro] = useState(true);
+const token = localStorage.getItem("token");
 
   let edithandle = async (e) => {
     e.preventDefault(); // stop page refresh
@@ -37,7 +38,11 @@ const Profile = () => {
       const res = await axios.put(
         "https://chitchat-j7bn.onrender.com/user/updateprofile",
         formData,
-        { withCredentials: true },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
 
       toast.success("Profile updated successfully");
@@ -78,7 +83,9 @@ const Profile = () => {
   useEffect(() => {
     axios
       .get("https://chitchat-j7bn.onrender.com/user/getprofile", {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         const user = res.data.user;
