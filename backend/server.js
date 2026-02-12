@@ -1,0 +1,37 @@
+
+const express = require("express");
+require('dotenv').config();
+
+const { Connectdb } = require('./models/db');
+
+const cookieParser = require("cookie-parser");
+
+const bodyParser = require("body-parser");
+const cors = require('cors');
+const router = require('./routes/auth');
+
+
+
+
+const app = express();
+app.use("/uploads", express.static("uploads"));
+app.use(cookieParser());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors({
+    origin: "http://localhost:5173", // your Vite frontend
+    credentials: true
+}));
+
+
+const Port = process.env.PORT
+
+app.use("/user", router)
+
+
+app.listen(Port, () => {
+    Connectdb()
+    console.log("succesfull run your is http://localhost:8000")
+})
+
+
