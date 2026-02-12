@@ -16,7 +16,7 @@ const Setting = ({ setActiveTab }) => {
   const [about, setabout] = useState("i am developer");
   useEffect(() => {
     axios
-      .get("http://localhost:8000/user/getprofile", {
+      .get("https://chitchat-j7bn.onrender.com/user/getprofile", {
         withCredentials: true,
       })
       .then((res) => {
