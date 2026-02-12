@@ -26,7 +26,7 @@ const Chat = ({
 
   let othuser = () => {
     axios
-      .get("http://localhost:8000/user/conversations", {
+      .get("https://chitchat-j7bn.onrender.com/user/conversations", {
         withCredentials: true,
       })
       .then((res) => {
