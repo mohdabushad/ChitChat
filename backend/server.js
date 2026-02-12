@@ -20,8 +20,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
     origin: [
-        "http://localhost:5173",
-        "https://your-frontend-domain.vercel.app" // 👈 production frontend
+        
+        "https://chitchat-1-5o49.onrender.com" // 
     ],
 }));
 
