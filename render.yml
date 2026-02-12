@@ -1,9 +1,7 @@
 services:
-  - type: web
-    name: chitchat-frontend
-    env: static
+  - type: static
+    name: chitchat
     staticPublishPath: frontend/dist
-    buildCommand: cd frontend && npm install && npm run build
     routes:
       - type: rewrite
         source: /*
