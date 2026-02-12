@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-    origin: "https://chitchat-1-5o49.onrender.com", // your Vite frontend
+    origin: "http://localhost:5173/", // your Vite frontend
     credentials: true
 }));
 
