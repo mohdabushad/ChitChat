@@ -31,7 +31,7 @@ const Message = ({ selectedUser, conversationid, userid, setmessagehide }) => {
   const bottomRef = useRef(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
   const lastMsgIdRef = useRef(null);
-
+const token = localStorage.getItem("token");
   useEffect(() => {
     const lastMsg = messag[messag.length - 1];
     if (!lastMsg) return;
