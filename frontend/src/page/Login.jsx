@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     try {
-      let posturl = "http://localhost:8000/user/login";
+      let posturl = "https://chitchat-j7bn.onrender.com/user/login";
 
       let res = await axios.post(
         posturl,
