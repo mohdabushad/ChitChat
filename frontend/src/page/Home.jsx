@@ -24,19 +24,28 @@ const Home = () => {
 
   let [mesaagehide,setmessagehide]=useState(true)
 
-  useEffect(() => {
-    axios
-      .get("https://chitchat-j7bn.onrender.com/user/getprofile", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        const user = res.data.user;
-        setuserid(user._id);
-        setchatname(user.name);
-        setImagePreview(user.profilePicture);
-      })
-      .catch(console.error);
-  }, []);
+
+const token = localStorage.getItem("token");
+
+useEffect(() => {
+  if (!token) return; // safety check
+
+  axios
+    .get("https://chitchat-j7bn.onrender.com/user/getprofile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      const user = res.data.user;
+      setuserid(user._id);
+      setchatname(user.name);
+      setImagePreview(user.profilePicture);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}, [token]);
 
   const [activeTab, setActiveTab] = useState("Chat");
   return (
