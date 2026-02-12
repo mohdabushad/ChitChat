@@ -45,10 +45,12 @@ exports.login = async (req, res) => {
         const token = jwt.sign({ email: userexits.email, id: userexits._id, name: userexits.name }, process.env.SCKEY,
             { expiresIn: '24h' }
         )
-        res.cookie("token", token, {
-            httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000 // 1 day
-        });
+   res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,        
+  sameSite: "none",    
+  maxAge: 24 * 60 * 60 * 1000,
+});;
 
 
 
