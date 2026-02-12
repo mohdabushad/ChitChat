@@ -10,10 +10,10 @@ import { FaArrowLeft } from "react-icons/fa6";
 
 const Chat = ({ userid, sethide }) => {
   
-  let [conversations, setConversations] = useState([]);
+   let [conversations, setConversations] = useState([]);
 
   // const loggedInUserId = userid; // auth से लो
-
+const token = localStorage.getItem("token");
   let [inp, setinp] = useState("");
   useEffect(() => {
     if (!inp.trim()) {
@@ -22,7 +22,9 @@ const Chat = ({ userid, sethide }) => {
     }
     axios
       .get(`https://chitchat-j7bn.onrender.com/user/getAlluser/${inp}`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         setConversations(res.data.userlist);
@@ -40,15 +42,13 @@ const Chat = ({ userid, sethide }) => {
         messegeStatus: "send",
       },
       {
-        withCredentials: true,
         headers: {
-          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
         },
       },
     );
     sethide(true);
   };
-
   return (
     <div>
       <div className="max-w-[600px] h-[100vh] bg-[#FFFFFF] border-x-1 border-[#1D202A] w-full">
