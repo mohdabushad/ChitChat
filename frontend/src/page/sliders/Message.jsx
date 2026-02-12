@@ -59,7 +59,6 @@ const Message = ({ selectedUser, conversationid, userid, setmessagehide }) => {
   //    }
   //  }, [messag, isAtBottom]);
 
- 
   let reciveMessage = () => {
     
     if (!conversationid) return;
@@ -68,7 +67,9 @@ const Message = ({ selectedUser, conversationid, userid, setmessagehide }) => {
       .get(
         `https://chitchat-j7bn.onrender.com/user/conversations/${conversationid}/message`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
       )
       .then((res) => {
@@ -111,12 +112,15 @@ const Message = ({ selectedUser, conversationid, userid, setmessagehide }) => {
       formData.append("image", image); // 👈 SAME NAME AS multer
     }
 
-    await axios.post("https://chitchat-j7bn.onrender.com/user/sendmessage", formData, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "multipart/form-data",
+    await axios.post(
+      "https://chitchat-j7bn.onrender.com/user/sendmessage",
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
      settext("");
     setimage(null);
     reciveMessage();
@@ -127,12 +131,14 @@ const Message = ({ selectedUser, conversationid, userid, setmessagehide }) => {
   }, [conversationid, selectedUser, reciveMessage()]);
 
   const deletemsg = async () => {
-    await axios.delete(`https://chitchat-j7bn.onrender.com/user/message/${msgid}`, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "multipart/form-data",
+    await axios.delete(
+      `https://chitchat-j7bn.onrender.com/user/message/${msgid}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
 
    
     reciveMessage();
