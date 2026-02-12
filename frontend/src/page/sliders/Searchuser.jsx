@@ -21,7 +21,7 @@ const Chat = ({ userid, sethide }) => {
       return;
     }
     axios
-      .get(`http://localhost:8000/user/getAlluser/${inp}`, {
+      .get(`https://chitchat-j7bn.onrender.com/user/getAlluser/${inp}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -32,7 +32,7 @@ const Chat = ({ userid, sethide }) => {
 
   const sendconvers = async (receiverId) => {
     await axios.post(
-      "http://localhost:8000/user/sendmessage",
+      "https://chitchat-j7bn.onrender.com/user/sendmessage",
       {
         sender: `${userid}`,
         resiver: `${receiverId}`,
