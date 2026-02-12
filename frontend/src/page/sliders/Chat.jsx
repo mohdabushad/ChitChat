@@ -23,11 +23,13 @@ const Chat = ({
 
   const [conversations, setConversations] = useState([]);
   const loggedInUserId = userid; // auth से लो
-
+const token = localStorage.getItem("token");
   let othuser = () => {
     axios
       .get("https://chitchat-j7bn.onrender.com/user/conversations", {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         setConversations(res.data.conversations);
