@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(cors({
     origin: [
         
-        "https://chitchat-1-5o49.onrender.com" // 
+        "https://chitchat-1-5o49.onrender.com" 
     ],
 }));
 
