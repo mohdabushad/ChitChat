@@ -35,7 +35,7 @@ const Profile = () => {
       }
 
       const res = await axios.put(
-        "http://localhost:8000/user/updateprofile",
+        "https://chitchat-j7bn.onrender.com/user/updateprofile",
         formData,
         { withCredentials: true },
       );
@@ -77,7 +77,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/user/getprofile", {
+      .get("https://chitchat-j7bn.onrender.com/user/getprofile", {
         withCredentials: true,
       })
       .then((res) => {
