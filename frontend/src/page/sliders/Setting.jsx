@@ -14,10 +14,14 @@ const Setting = ({ setActiveTab }) => {
 
   const [logoute,setlogoute]=useState(true)
   const [about, setabout] = useState("i am developer");
+
+  const token = localStorage.getItem("token");
   useEffect(() => {
     axios
       .get("https://chitchat-j7bn.onrender.com/user/getprofile", {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         const user = res.data.user;
