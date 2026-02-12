@@ -19,9 +19,13 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-    origin: "http://localhost:5173/", // your Vite frontend
+    origin: [
+        "http://localhost:5173",
+        "https://your-frontend-domain.vercel.app" // 👈 production frontend
+    ],
     credentials: true
 }));
+
 
 
 const Port = process.env.PORT
