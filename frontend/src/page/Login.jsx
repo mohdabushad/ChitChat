@@ -28,7 +28,6 @@ const Login = () => {
         posturl,
         inp, // request body
         {
-          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
